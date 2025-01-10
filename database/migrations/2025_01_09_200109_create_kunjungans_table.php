@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('kunjungans', function (Blueprint $table) {
             $table->id();
-            $table->string('no_kunjungan');
+            $table->string('no_kunjungan')->unique();
             $table->foreignId('id_pasien')->constrained('pasiens');
             $table->timestamp('tanggal_masuk');
             $table->timestamp('tanggal_keluar');

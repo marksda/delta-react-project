@@ -9,4 +9,8 @@ class pasien extends Model
 {
     /** @use HasFactory<\Database\Factories\PasienFactory> */
     use HasFactory;
+
+    public function pasien() {
+        
+    }
 }
