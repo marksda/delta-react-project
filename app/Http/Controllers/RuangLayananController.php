@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRuangLayananRequest;
 use App\Http\Requests\UpdateRuangLayananRequest;
+use App\Http\Resources\RuangLayananResource;
 use App\Models\RuangLayanan;
 
 class RuangLayananController extends Controller
@@ -13,7 +14,12 @@ class RuangLayananController extends Controller
      */
     public function index()
     {
-        //
+      $query = RuangLayanan::query();
+      $ruang_layanans = $query->paginate(2)->onEachSide(1);
+
+      return inertia("Ruang/Index", [
+        "ruang_layanans" => RuangLayananResource::collection($ruang_layanans)
+      ]);
     }
 
     /**
