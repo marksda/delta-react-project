@@ -19,8 +19,11 @@ class RuangLayananResource extends JsonResource
         $jenis_layanan = $this->jenis_layanan;
         return [
           'id' => $this->id,
-          'nama' => $this->nama,
-          'tgl_pembuatan' => (new Carbon($this->created_at))->format('d-m-Y'),
+          'nama' => $this->nama,          
+          'created_date' => [
+            "value" => $this->created_at,
+            "formatted" => (new Carbon($this->created_at))->format('d-m-Y')
+          ],
           'jenis_layanan' => [
             'id' => $jenis_layanan->id,
             'nama' => $jenis_layanan->nama
