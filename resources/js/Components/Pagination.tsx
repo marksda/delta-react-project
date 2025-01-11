@@ -1,6 +1,6 @@
 import { Link } from "@inertiajs/react";
 
-export default function Pagination({ links }) {
+export default function Pagination({ links }: {links: any[]}) {
   return (
     <nav className="text-center mt-4">
       {links.map(link => (
