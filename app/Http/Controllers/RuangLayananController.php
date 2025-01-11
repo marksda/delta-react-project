@@ -15,7 +15,7 @@ class RuangLayananController extends Controller
     public function index()
     {
       $query = RuangLayanan::query();
-      $ruang_layanans = $query->paginate(4)->onEachSide(1);
+      $ruang_layanans = $query->paginate(2)->onEachSide(1);
 
       return inertia("Ruang/Index", [
         "ruang_layanans" => RuangLayananResource::collection($ruang_layanans)

@@ -8,6 +8,10 @@ export interface User {
 export interface JenisLayanan {
   id: number;
   nama: string;
+  created_date: {
+    value: string;
+    formatted: string;
+  };
 }
 
 export interface RuangLayanan {
