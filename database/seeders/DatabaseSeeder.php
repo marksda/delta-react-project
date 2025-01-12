@@ -22,6 +22,29 @@ class DatabaseSeeder extends Seeder
    */
   public function run(): void
   {
+    // JenisLayanan::factory()
+    //                 ->count(6)
+    //                 ->sequence(
+    //                     ['nama' => 'Rawat Jalan'],
+    //                     ['nama' => 'IGD'],
+    //                     ['nama' => 'Rawat Inap'],
+    //                     ['nama' => 'Farmasi'],
+    //                     ['nama' => 'Radiologi'],
+    //                     ['nama' => 'Laborat']
+    //                 )
+    //                 ->create();
+
+    // RuangLayanan::factory()
+    //   ->count(6)
+    //   ->sequence(
+    //       ['nama' => 'Klinik Jantung', 'jenis_layanan_id' => 1],
+    //       ['nama' => 'Klinik Syaraf', 'jenis_layanan_id' => 1],
+    //       ['nama' => 'Klinik Paru', 'jenis_layanan_id' => 1],
+    //       ['nama' => 'Klinik Anak', 'jenis_layanan_id' => 1],
+    //       ['nama' => 'Farmasi 1', 'jenis_layanan_id' => 4],
+    //   )
+    //   ->create();
+    
     // $adminRole = Role::create(['name' => RolesEnum::Admin->value]);
     // $dokterRole = Role::create(['name' => RolesEnum::Dokter->value]);
     // $apotekerRole = Role::create(['name' => RolesEnum::Apoteker->value]);
@@ -93,28 +116,7 @@ class DatabaseSeeder extends Seeder
     //     'email' => 'test@example.com',
     // ]);
 
-    // JenisLayanan::factory()
-    //                 ->count(6)
-    //                 ->sequence(
-    //                     ['nama' => 'Rawat Jalan'],
-    //                     ['nama' => 'IGD'],
-    //                     ['nama' => 'Rawat Inap'],
-    //                     ['nama' => 'Farmasi'],
-    //                     ['nama' => 'Radiologi'],
-    //                     ['nama' => 'Laborat']
-    //                 )
-    //                 ->create();
-
-    // RuangLayanan::factory()
-    //   ->count(6)
-    //   ->sequence(
-    //       ['nama' => 'Klinik Jantung', 'jenis_layanan_id' => 1],
-    //       ['nama' => 'Klinik Syaraf', 'jenis_layanan_id' => 1],
-    //       ['nama' => 'Klinik Paru', 'jenis_layanan_id' => 1],
-    //       ['nama' => 'Klinik Anak', 'jenis_layanan_id' => 1],
-    //       ['nama' => 'Farmasi 1', 'jenis_layanan_id' => 4],
-    //   )
-    //   ->create();
+    
 
       
   }
