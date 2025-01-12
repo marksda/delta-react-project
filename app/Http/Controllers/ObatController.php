@@ -78,7 +78,7 @@ class ObatController extends Controller
       $response = Http::withHeaders([
         'Content-Type'=> 'application/json',
         'Authorization' => 'Bearer 9df38141-7c54-4dad-b69b-2157d83779bf|s0Mdc22XIeYBXza3nFhe6AddKB7pnqelMWQCc4Oic60a4240',
-      ])->get('http://http://recruitment.rsdeltasurya.com/api/v1/medicines');
+      ])->get('http://recruitment.rsdeltasurya.com/api/v1/medicines');
 
       $obats = $response->json();
 

@@ -20,7 +20,7 @@ class LayananMedisController extends Controller
 
     return inertia("LayananMedis", [
         "layanans" => LayananResource::collection($layanans),
-        "obats" => $obats->medicines,
+        "obats" => $obats,
         'queryParams' => request()->query() ?: null,
         'success' => session('success'),
     ]);

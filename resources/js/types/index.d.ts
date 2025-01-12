@@ -63,6 +63,10 @@ export interface Layanan {
   };
 }
 
+export interface Obat {
+  id: string;
+  name: string
+}
 
 export type PaginatedData<T = any> = {
   data: T[];

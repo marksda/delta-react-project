@@ -1,18 +1,24 @@
 import { Separator } from '@/components/ui/separator';
 import AuthenticatedRMLayout from '@/Layouts/AuthenticatedRMLayout';
-import { Layanan, PageProps, PaginatedData } from '@/types';
+import { Layanan, Obat, PageProps, PaginatedData } from '@/types';
 import { Head } from '@inertiajs/react';
-import { LayoutGrid } from 'lucide-react';
+import { Check, ChevronsUpDown, LayoutGrid } from 'lucide-react';
 import { useState } from 'react';
 import _ from 'lodash';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Command, CommandEmpty, CommandInput, CommandList, CommandGroup, CommandItem } from '@/components/ui/command';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { Input } from '@/components/ui/input';
 
-export default function LayananMedis({auth, obats, layanans}: PageProps<{layanans: PaginatedData<Layanan>}>) {
-  // console.log(layanans);
+export default function LayananMedis({auth, obats, layanans}: PageProps<{layanans: PaginatedData<Layanan>; obats: any}>) {
+  console.log(obats);
   const [dataLayanan, setDataLayanan] = useState(layanans.data);
   const [selectedLayanan, setSelectedLayanan] = useState<Layanan|null>(null);
-
-  console.log(obats);
+  const [dataObat, setDataObat] = useState<Obat[]>(obats.medicines);
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
 
   const handleClickPasien = (id: number) => {
     let layanan = _.find(dataLayanan, function(layanan) {
@@ -60,15 +66,61 @@ export default function LayananMedis({auth, obats, layanans}: PageProps<{layanan
             
           </div>
           <div className="mx-4">
-            <Tabs defaultValue="account" className="w-full" orientation='vertical'>
+            <Tabs defaultValue="pemeriksaan" className="w-full" orientation='vertical'>
               <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="account">Pemeriksaan</TabsTrigger>
-                <TabsTrigger value="password">Resep</TabsTrigger>
+                <TabsTrigger value="pemeriksaan">Pemeriksaan</TabsTrigger>
+                <TabsTrigger value="resep">Resep</TabsTrigger>
               </TabsList>
-              <TabsContent value="account">    
-                dsfsdf              
+              <TabsContent value="pemeriksaan">    
+                asdasd              
               </TabsContent>
-              <TabsContent value="password">
+              <TabsContent value="resep">
+                <div className="flex gap-2">
+                  <Popover open={open} onOpenChange={setOpen}>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant="outline"
+                        role="combobox"
+                        aria-expanded={open}
+                        className="flex-grow justify-between"
+                      >
+                        {value
+                          ? dataObat.find((obat) => obat.name === value)?.name
+                          : "Select obat..."}
+                        <ChevronsUpDown className="opacity-50" />
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-[250px] p-0">
+                      <Command>
+                        <CommandInput placeholder="Search framework..." />
+                        <CommandList>
+                          <CommandEmpty>No framework found.</CommandEmpty>
+                          <CommandGroup>
+                            {dataObat.map((obat) => (
+                              <CommandItem
+                                key={obat.id}
+                                value={obat.name}
+                                onSelect={(currentValue) => {
+                                  setValue(currentValue === value ? "" : currentValue)
+                                  setOpen(false)
+                                }}
+                              >
+                                {obat.name}
+                                <Check
+                                  className={cn(
+                                    "ml-auto",
+                                    value === obat.name ? "opacity-100" : "opacity-0"
+                                  )}
+                                />
+                              </CommandItem>
+                            ))}
+                          </CommandGroup>
+                        </CommandList>
+                      </Command>
+                    </PopoverContent>
+                  </Popover>
+                  <Input className="w-24" type="number" placeholder="Jml" />
+                </div>
               </TabsContent>
             </Tabs>
           </div>
