@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\PasienResource;
+use App\Http\Resources\LayananResource;
+use App\Models\Layanan;
 use App\Models\Pasien;
 use Illuminate\Http\Request;
 
@@ -13,11 +14,11 @@ class LayananMedisController extends Controller
    */
   public function index()
   {
-    $query = Pasien::query();
-    $pasiens = $query->paginate(10)->onEachSide(1);
+    $query = Layanan::query();
+    $layanans = $query->paginate(10)->onEachSide(1);
 
     return inertia("LayananMedis", [
-        "pasiens" => PasienResource::collection($pasiens),
+        "layanans" => LayananResource::collection($layanans),
         'queryParams' => request()->query() ?: null,
         'success' => session('success'),
     ]);

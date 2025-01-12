@@ -21,7 +21,7 @@ class PasienResource extends JsonResource
       'nama' => $this->nama,   
       'gender' => $this->gender,
       'tgl_lahir' => [
-        "value" => $this->created_at,
+        "value" => $this->tgl_lahir,
         "formatted" => (new Carbon($this->tgl_lahir))->format('d-m-Y')
       ]
     ];
