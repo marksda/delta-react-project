@@ -13,7 +13,7 @@ export default function RekamMedis() {
           <div className='flex justify-items-stretch items-center p-2'>
             <LayoutGrid size={16}/> 
             <h4 className="p-2 text-base font-semibold tracking-tight">
-              Daftar kunjungan pasien
+              Register kunjungan pasien
             </h4>
           </div>
           <Separator className="mb-1" />

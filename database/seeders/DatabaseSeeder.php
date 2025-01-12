@@ -107,17 +107,6 @@ class DatabaseSeeder extends Seeder
     // ])->assignRole(RolesEnum::Admisi);
 
 
-    Pasien::factory(25)->create();
-
-    // User::factory(10)->create();
-
-    // User::factory()->create([
-    //     'name' => 'Test User',
-    //     'email' => 'test@example.com',
-    // ]);
-
-    
-
-      
+    Pasien::factory(25)->create();      
   }
 }
