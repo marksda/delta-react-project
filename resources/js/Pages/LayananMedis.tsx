@@ -1,9 +1,14 @@
 import { Separator } from '@/components/ui/separator';
 import AuthenticatedRMLayout from '@/Layouts/AuthenticatedRMLayout';
+import { PageProps, PaginatedData, Pasien } from '@/types';
 import { Head } from '@inertiajs/react';
 import { LayoutGrid } from 'lucide-react';
 
-export default function RekamMedis() {
+export default function LayananMedis({auth, pasiens}: PageProps<{pasiens: PaginatedData<Pasien>}>) {
+  console.log(pasiens);
+  if(pasiens == undefined) {
+    // get(route("pasien.index"));
+  }
   return (
     <AuthenticatedRMLayout>
       <Head title="Layanan Pasien" />

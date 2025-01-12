@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('no_kunjungan')->unique();
             $table->foreignId('id_pasien')->constrained('pasiens');
             $table->timestamp('tanggal_masuk');
-            $table->timestamp('tanggal_keluar');
+            $table->timestamp('tanggal_keluar')->nullable();
             $table->timestamps();
         });
     }

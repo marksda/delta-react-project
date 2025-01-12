@@ -8,6 +8,16 @@ export interface User {
   roles: string[]
 }
 
+export interface Pasien {
+  id: number;
+  name: string;
+  email: string;
+  email_verified_at?: string;
+  created_at: string;
+  permissions: string[];
+  roles: string[]
+}
+
 export interface JenisLayanan {
   id: number;
   nama: string;
@@ -25,6 +35,11 @@ export interface RuangLayanan {
     formatted: string;
   };
   jenis_layanan: JenisLayanan;
+}
+
+export type PaginatedData<T = any> = {
+  data: T[];
+  links: Record<string, string>
 }
 
 export type PageProps<

@@ -4,63 +4,86 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePasienRequest;
 use App\Http\Requests\UpdatePasienRequest;
+use App\Http\Resources\PasienResource;
 use App\Models\Pasien;
 
 class PasienController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+  /**
+   * Display a listing of the resource.
+   */
+  public function index()
+  {
+    $query = Pasien::query();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+    // $sortField = request("sort_field", 'created_at');
+    // $sortDirection = request("sort_direction", "desc");
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StorePasienRequest $request)
-    {
-        //
-    }
+    // if (request("name")) {
+    //     $query->where("name", "like", "%" . request("name") . "%");
+    // }
+    // if (request("status")) {
+    //     $query->where("status", request("status"));
+    // }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Pasien $pasien)
-    {
-        //
-    }
+    // $pasiens = $query->orderBy($sortField, $sortDirection)
+    //     ->paginate(10)
+    //     ->onEachSide(1);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Pasien $pasien)
-    {
-        //
-    }
+    $pasiens = $query->paginate(10)->onEachSide(1);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatePasienRequest $request, Pasien $pasien)
-    {
-        //
-    }
+    return inertia("RekamMedis", [
+      "pasiens" => PasienResource::collection($pasiens),
+      'queryParams' => request()->query() ?: null,
+      'success' => session('success'),
+    ]);
+  }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Pasien $pasien)
-    {
-        //
-    }
+  /**
+   * Show the form for creating a new resource.
+   */
+  public function create()
+  {
+    //
+  }
+
+  /**
+   * Store a newly created resource in storage.
+   */
+  public function store(StorePasienRequest $request)
+  {
+    //
+  }
+
+  /**
+   * Display the specified resource.
+   */
+  public function show(Pasien $pasien)
+  {
+    //
+  }
+
+  /**
+   * Show the form for editing the specified resource.
+   */
+  public function edit(Pasien $pasien)
+  {
+    //
+  }
+
+  /**
+   * Update the specified resource in storage.
+   */
+  public function update(UpdatePasienRequest $request, Pasien $pasien)
+  {
+    //
+  }
+
+  /**
+   * Remove the specified resource from storage.
+   */
+  public function destroy(Pasien $pasien)
+  {
+    //
+  }
 }

@@ -1,18 +1,17 @@
 <?php
 
 use App\Http\Controllers\JenisLayananController;
+use App\Http\Controllers\LayananMedisController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RuangLayananController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 Route::redirect('/', 'layanan_medis');
 
 Route::middleware(['auth', 'verified'])->group(function() {
-    Route::get('/dashboard', fn() => Inertia::render('Dashboard'))
-        ->name('dashboard');
-    Route::get('/layanan_medis', fn() => Inertia::render('RekamMedis'))
-    ->name('layanan_medis');
+    // Route::get('/dashboard', fn() => Inertia::render('Dashboard'))
+    //     ->name('dashboard');
+    Route::resource('layanan_medis', LayananMedisController::class);
     Route::resource('jenis_layanan', JenisLayananController::class);
     Route::resource('ruang', RuangLayananController::class);
 });

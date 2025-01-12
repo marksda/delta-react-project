@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('layanans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('kunjungan_id')->constrained('kunjungans');
             $table->string('no_layanan')->unique();
             $table->foreignId('id_jenis_layanan')->constrained('jenis_layanans');
             $table->foreignId('id_ruang_layanan')->constrained('ruang_layanans');
             $table->timestamp('tanggal_mulai');
-            $table->timestamp('tanggal_selesai');
+            $table->timestamp('tanggal_selesai')->nullable();
             $table->timestamps();
         });
     }
