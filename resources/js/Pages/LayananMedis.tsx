@@ -82,7 +82,7 @@ export default function LayananMedis({auth, obats, layanans}: PageProps<{layanan
                         variant="outline"
                         role="combobox"
                         aria-expanded={open}
-                        className="flex-grow justify-between"
+                        className="justify-between"
                       >
                         {value
                           ? dataObat.find((obat) => obat.name === value)?.name
@@ -120,6 +120,23 @@ export default function LayananMedis({auth, obats, layanans}: PageProps<{layanan
                     </PopoverContent>
                   </Popover>
                   <Input className="w-24" type="number" placeholder="Jml" />
+                  <Input className="flex-grow min-w-[200px]" type="text" placeholder="Signa" />
+                  <Button>Add</Button>
+                </div>
+                <div className="mt-4 min-h-[350px]">
+                  <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 border-b-2 border-gray-500">
+                      <tr className="text-nowrap">
+                        <th className="px-3 py-2 w-16">No.</th>
+                        <th className="w-[400px] px-3 py-2">Nama Obat</th>
+                        <th className="w-24 px-3 py-2">Jumlah</th>
+                        <th className="px-3 py-2">signa</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+                <div className="mt-4 border-t-[2px] py-2 border-black">
+                  <Button>Simpan</Button>
                 </div>
               </TabsContent>
             </Tabs>
