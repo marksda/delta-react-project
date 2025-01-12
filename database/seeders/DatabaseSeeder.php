@@ -10,6 +10,8 @@ namespace Database\Seeders;
 use App\Enum\PermissionsEnum;
 use App\Enum\RolesEnum;
 use App\Models\JenisLayanan;
+use App\Models\Kunjungan;
+use App\Models\Layanan;
 use App\Models\Pasien;
 use App\Models\RuangLayanan;
 use App\Models\User;
@@ -108,7 +110,21 @@ class DatabaseSeeder extends Seeder
       'email' => 'admisi@example.com',
     ])->assignRole(RolesEnum::Admisi);
 
-    Pasien::factory(25)->create();      
+    Pasien::factory(25)->create();     
+    
+    Kunjungan::factory()->create([
+      'no_kunjungan' => str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT),
+      'tanggal_masuk' => now(),
+      'id_pasien' => 1
+    ]);
+
+    Layanan::factory()->create([
+      'kunjungan_id' => 1,      
+      'no_layanan' => str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT),
+      'id_jenis_layanan' => 1,
+      'id_ruang_layanan' => 1,
+      'tanggal_mulai' => now()
+    ]);
     
   }
 }
