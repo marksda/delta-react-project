@@ -6,12 +6,14 @@ use App\Http\Controllers\RuangLayananController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::redirect('/', 'dashboard');
+Route::redirect('/', 'layanan_medis');
 
 Route::middleware(['auth', 'verified'])->group(function() {
     Route::get('/dashboard', fn() => Inertia::render('Dashboard'))
         ->name('dashboard');
-    Route::resource('layanan', JenisLayananController::class);
+    Route::get('/layanan_medis', fn() => Inertia::render('RekamMedis'))
+    ->name('layanan_medis');
+    Route::resource('jenis_layanan', JenisLayananController::class);
     Route::resource('ruang', RuangLayananController::class);
 });
 

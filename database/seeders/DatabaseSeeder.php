@@ -9,6 +9,7 @@ namespace Database\Seeders;
 
 use App\Enum\PermissionsEnum;
 use App\Enum\RolesEnum;
+use App\Models\Pasien;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -21,66 +22,69 @@ class DatabaseSeeder extends Seeder
    */
   public function run(): void
   {
-    $adminRole = Role::create(['name' => RolesEnum::Admin->value]);
-    $dokterRole = Role::create(['name' => RolesEnum::Dokter->value]);
-    $apotekerRole = Role::create(['name' => RolesEnum::Apoteker->value]);
-    $admisiRole = Role::create(['name' => RolesEnum::Admisi->value]);
-    $perawatRole = Role::create(['name' => RolesEnum::Perawat->value]);
+    // $adminRole = Role::create(['name' => RolesEnum::Admin->value]);
+    // $dokterRole = Role::create(['name' => RolesEnum::Dokter->value]);
+    // $apotekerRole = Role::create(['name' => RolesEnum::Apoteker->value]);
+    // $admisiRole = Role::create(['name' => RolesEnum::Admisi->value]);
+    // $perawatRole = Role::create(['name' => RolesEnum::Perawat->value]);
 
-    $manageUserPermission = Permission::create([
-      'name' => PermissionsEnum::ManageUser->value,
-    ]);
+    // $manageUserPermission = Permission::create([
+    //   'name' => PermissionsEnum::ManageUser->value,
+    // ]);
 
-    $manageBridgingPermission = Permission::create([
-      'name' => PermissionsEnum::ManageBridging->value,
-    ]);
+    // $manageBridgingPermission = Permission::create([
+    //   'name' => PermissionsEnum::ManageBridging->value,
+    // ]);
 
-    $manageKunjunganPermission = Permission::create([
-      'name' => PermissionsEnum::ManageKunjungan->value,
-    ]);
+    // $manageKunjunganPermission = Permission::create([
+    //   'name' => PermissionsEnum::ManageKunjungan->value,
+    // ]);
 
-    $manageLayananPermission = Permission::create([
-      'name' => PermissionsEnum::ManageLayanan->value,
-    ]);
+    // $manageLayananPermission = Permission::create([
+    //   'name' => PermissionsEnum::ManageLayanan->value,
+    // ]);
 
-    $manageRekamMedisPermission = Permission::create([
-      'name' => PermissionsEnum::ManageRekamMedis->value,
-    ]);
+    // $manageRekamMedisPermission = Permission::create([
+    //   'name' => PermissionsEnum::ManageRekamMedis->value,
+    // ]);
 
-    $manageResepPermission = Permission::create([
-      'name' => PermissionsEnum::ManageResep->value,
-    ]);
+    // $manageResepPermission = Permission::create([
+    //   'name' => PermissionsEnum::ManageResep->value,
+    // ]);
 
-    $dokterRole->syncPermissions([$manageRekamMedisPermission, $manageResepPermission]);
-    $perawatRole->syncPermissions([$manageRekamMedisPermission, $manageLayananPermission]);
-    $apotekerRole->syncPermissions([$manageResepPermission]);
-    $admisiRole->syncPermissions([$manageKunjunganPermission]);
-    $adminRole->syncPermissions([$manageUserPermission, $manageBridgingPermission]);
+    // $dokterRole->syncPermissions([$manageRekamMedisPermission, $manageResepPermission]);
+    // $perawatRole->syncPermissions([$manageRekamMedisPermission, $manageLayananPermission]);
+    // $apotekerRole->syncPermissions([$manageResepPermission]);
+    // $admisiRole->syncPermissions([$manageKunjunganPermission]);
+    // $adminRole->syncPermissions([$manageUserPermission, $manageBridgingPermission]);
 
-    User::factory()->create([
-      'name' => 'Budi Arif',
-      'email' => 'dokter@example.com',
-    ])->assignRole(RolesEnum::Dokter);
+    // User::factory()->create([
+    //   'name' => 'Budi Arif',
+    //   'email' => 'dokter@example.com',
+    // ])->assignRole(RolesEnum::Dokter);
 
-    User::factory()->create([
-      'name' => 'Ida iyasa',
-      'email' => 'perawat@example.com',
-    ])->assignRole(RolesEnum::Perawat);
+    // User::factory()->create([
+    //   'name' => 'Ida iyasa',
+    //   'email' => 'perawat@example.com',
+    // ])->assignRole(RolesEnum::Perawat);
 
-    User::factory()->create([
-      'name' => 'Nur laili',
-      'email' => 'apoteker@example.com',
-    ])->assignRole(RolesEnum::Apoteker);
+    // User::factory()->create([
+    //   'name' => 'Nur laili',
+    //   'email' => 'apoteker@example.com',
+    // ])->assignRole(RolesEnum::Apoteker);
 
-    User::factory()->create([
-      'name' => 'Achmad Zubair',
-      'email' => 'admin@example.com',
-    ])->assignRole(RolesEnum::Admin);
+    // User::factory()->create([
+    //   'name' => 'Achmad Zubair',
+    //   'email' => 'admin@example.com',
+    // ])->assignRole(RolesEnum::Admin);
 
-    User::factory()->create([
-      'name' => 'Fauzan',
-      'email' => 'admisi@example.com',
-    ])->assignRole(RolesEnum::Admisi);
+    // User::factory()->create([
+    //   'name' => 'Fauzan',
+    //   'email' => 'admisi@example.com',
+    // ])->assignRole(RolesEnum::Admisi);
+
+
+    Pasien::factory(25)->create();
 
     // User::factory(10)->create();
 

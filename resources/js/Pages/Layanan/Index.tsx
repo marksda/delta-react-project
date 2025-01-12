@@ -40,10 +40,10 @@ export default function Index({jenis_layanans}: {jenis_layanans: any;} ) {
                       <TableCell className="font-medium">{item.nama}</TableCell>
                       <TableCell className="font-medium">{item.created_date.formatted}</TableCell>
                       <TableCell className="flex gap-1">
-                        <Link href={route("layanan.edit", item.id)} className="text-blue-600 dark:text-blue-500 mx-1">
+                        <Link href={route("jenis_layanan.edit", item.id)} className="text-blue-600 dark:text-blue-500 mx-1">
                           <FilePen size={16}/>
                         </Link>
-                        <Link href={route("layanan.destroy", item.id)} className="text-red-600 dark:text-red-500 mx-1">
+                        <Link href={route("jenis_layanan.destroy", item.id)} className="text-red-600 dark:text-red-500 mx-1">
                           <Trash2 size={16}/>
                         </Link>
                       </TableCell>

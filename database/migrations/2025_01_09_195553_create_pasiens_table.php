@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('no_rm')->unique();
             $table->string('nama');
+            $table->date('tgl_lahir');
+            $table->string('gender');
             $table->timestamps();
         });
     }

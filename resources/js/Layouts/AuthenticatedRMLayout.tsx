@@ -1,50 +1,27 @@
-import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
-import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import { Link, usePage } from '@inertiajs/react';
+import { usePage } from '@inertiajs/react';
 import { PropsWithChildren, ReactNode, useState } from 'react';
+import logo from '../../images/app.png'
 
 export default function Authenticated({
-  header,
   children,
 }: PropsWithChildren<{ header?: ReactNode }>) {
   const user = usePage().props.auth.user;
+  console.log(user);
 
   const [showingNavigationDropdown, setShowingNavigationDropdown] =
     useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
-      <nav className="border-b border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="bg-gray-100 dark:bg-gray-900">
+      <nav className="border-b-[1px] border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
+        <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 justify-between">
             <div className="flex">
-              <div className="flex shrink-0 items-center">
-                <Link href="/">
-                  <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                </Link>
-              </div>
-
-              <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                <NavLink
-                  href={route('dashboard')}
-                  active={route().current('dashboard')}
-                >
-                  Dashboard
-                </NavLink>
-                <NavLink
-                  href={route('ruang.index')}
-                  active={route().current('ruang')}
-                >
-                  Ruang
-                </NavLink>
-                <NavLink
-                  href={route('jenis_layanan.index')}
-                  active={route().current('jenis_layanan')}
-                >
-                  Layanan
-                </NavLink>
+              <div className="flex shrink-0 items-center gap-4">
+                  <img className='h-[24px]' src={logo} alt="no-image" />
+                  <h3 className="font-bold">{`Layanan ${user.roles[0]}` }</h3>
               </div>
             </div>
 
@@ -142,15 +119,6 @@ export default function Authenticated({
             ' sm:hidden'
           }
         >
-          <div className="space-y-1 pb-3 pt-2">
-            <ResponsiveNavLink
-              href={route('dashboard')}
-              active={route().current('dashboard')}
-            >
-              Dashboard
-            </ResponsiveNavLink>
-          </div>
-
           <div className="border-t border-gray-200 pb-1 pt-4 dark:border-gray-600">
             <div className="px-4">
               <div className="text-base font-medium text-gray-800 dark:text-gray-200">
@@ -176,15 +144,6 @@ export default function Authenticated({
           </div>
         </div>
       </nav>
-
-      {header && (
-        <header className="bg-white shadow dark:bg-gray-800">
-          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            {header}
-          </div>
-        </header>
-      )}
-
       <main>{children}</main>
     </div>
   );
