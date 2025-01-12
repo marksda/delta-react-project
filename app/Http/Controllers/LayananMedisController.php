@@ -16,9 +16,11 @@ class LayananMedisController extends Controller
   {
     $query = Layanan::query();
     $layanans = $query->paginate(10)->onEachSide(1);
+    $obats = ObatController::getObat();
 
     return inertia("LayananMedis", [
         "layanans" => LayananResource::collection($layanans),
+        "obats" => $obats->medicines,
         'queryParams' => request()->query() ?: null,
         'success' => session('success'),
     ]);

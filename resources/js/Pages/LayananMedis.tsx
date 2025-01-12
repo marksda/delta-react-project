@@ -5,11 +5,14 @@ import { Head } from '@inertiajs/react';
 import { LayoutGrid } from 'lucide-react';
 import { useState } from 'react';
 import _ from 'lodash';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-export default function LayananMedis({auth, layanans}: PageProps<{layanans: PaginatedData<Layanan>}>) {
-  console.log(layanans);
+export default function LayananMedis({auth, obats, layanans}: PageProps<{layanans: PaginatedData<Layanan>}>) {
+  // console.log(layanans);
   const [dataLayanan, setDataLayanan] = useState(layanans.data);
   const [selectedLayanan, setSelectedLayanan] = useState<Layanan|null>(null);
+
+  console.log(obats);
 
   const handleClickPasien = (id: number) => {
     let layanan = _.find(dataLayanan, function(layanan) {
@@ -40,7 +43,7 @@ export default function LayananMedis({auth, layanans}: PageProps<{layanans: Pagi
                 <div 
                   onClick={(e) => handleClickPasien(layanan.id)} 
                   className={
-                    `px-3 py-1 m-1 ${selectedLayanan !== null && selectedLayanan.id ==layanan.id ? 'bg-yellow-200' : 'bg-gray-100 hover:bg-gray-200'} border-slate-200 border-solid border-[1px]`
+                    `px-3 py-1 m-1 ${selectedLayanan !== null && selectedLayanan.id ==layanan.id ? 'bg-yellow-200' : 'bg-gray-100 hover:bg-gray-200'} border-slate-200 border-solid border-[1px] hover:cursor-pointer`
                   }
                 >
                   <span className='font-semibold'>{layanan.kunjungan.pasien.nama}</span><br />
@@ -52,11 +55,22 @@ export default function LayananMedis({auth, layanans}: PageProps<{layanans: Pagi
             }
           </ul>
         </div>
-        <div className="h-full w-3/4 ">
-          <div className="h-full overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-800">
-            <div className="p-6 text-gray-900 dark:text-gray-100">
-              You're logged in!
-            </div>
+        <div className="h-full w-3/4 bg-white shadow-sm rounded-lg">
+          <div className="h-28 border-[1px] m-4">
+            
+          </div>
+          <div className="mx-4">
+            <Tabs defaultValue="account" className="w-full" orientation='vertical'>
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="account">Pemeriksaan</TabsTrigger>
+                <TabsTrigger value="password">Resep</TabsTrigger>
+              </TabsList>
+              <TabsContent value="account">    
+                dsfsdf              
+              </TabsContent>
+              <TabsContent value="password">
+              </TabsContent>
+            </Tabs>
           </div>
         </div>
       </div>
