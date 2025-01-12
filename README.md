@@ -11,6 +11,8 @@ Project ini menggunakan laravel inertia react maka untuk menjalankannya membutuh
   3. php artisan migrate
   4. php artisan db:seed
   5. composer run dev, jika composer di install non global maka jalankan perintah: php composer install
+  6. buka pada broser http://127.0.0.1:8000/
+  7. gunakan user: dokter@example.com atau apoteker@example.com sedangkan password: password untuk kedua user tersebut
 
 catatan: jika ingin menjalankan pada local host maka edit file composer.json dan hapus --host 192.168.1.111  pada bagian:
 "dev": [
